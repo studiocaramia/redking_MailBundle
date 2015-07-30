@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+  <parameters>
+    <parameter key="redking_mail.email_activity.class">Redking\Bundle\MailBundle\Document\EmailActivity</parameter>
+    <parameter key="redking_mail.email_activity.form.class">Redking\Bundle\MailBundle\Form\EmailActivityType</parameter>
+    <parameter key="redking_mail.email_activity.handler.class">Redking\Bundle\CoreRestBundle\Handler\BaseHandler</parameter>
+    <parameter key="redking_mail.email_activity.controller.class">Redking\Bundle\MailBundle\Controller\EmailActivitysController</parameter>
+  </parameters>
+  <services>
+    <service id="redking_mail.email_activity.handler" class="%redking_mail.email_activity.handler.class%">
+      <argument type="service" id="doctrine_mongodb.odm.document_manager"/>
+      <argument>%redking_mail.email_activity.class%</argument>
+      <argument>%redking_mail.email_activity.form.class%</argument>
+      <argument type="service" id="form.factory"/>
+      <argument type="service" id="logger"/>
+      <argument type="service" id="event_dispatcher"/>
+      <tag name="monolog.logger" channel="redking_rest"/>
+    </service>
+    <service id="redking_mail.email_activity.controller" class="%redking_mail.email_activity.controller.class%">
+      <argument type="service" id="redking_mail.email_activity.handler"/>
+      <call method="setContainer">
+        <argument type="service" id="service_container"/>
+      </call>
+    </service>
+  </services>
+</container>

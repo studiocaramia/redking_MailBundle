@@ -1,0 +1,32 @@
+{
+    "name": "redking/mail-bundle",
+    "type": "symfony-bundle",
+    "description": "Symfony 2 ",
+    "keywords": [ "symfony2", "mailgun", "user"],
+    "homepage": "https://bitbucket.org/redkingteam/redkingmailbundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Damien Matabon",
+            "homepage": "http://www.makemyweb.fr/",
+            "email": "damien.matabon@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": ">=5.3.3",
+        "mailgun/mailgun-php": "~1.7",
+        "r1pp3rj4ck/TwigstringBundle": "dev-master",
+        "redking/odm-translator-bundle": "dev-master",
+        "redking/core-rest-bundle": "dev-master",
+        "html2text/html2text": "~2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~3.7"
+    },
+    "autoload": {
+        "psr-0": { "Redking\\Bundle\\MailBundle": "" }
+    },
+    "target-dir": "Redking/Bundle/MailBundle"
+}

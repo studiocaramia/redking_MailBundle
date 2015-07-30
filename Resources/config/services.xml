@@ -1,0 +1,59 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <parameters>
+        <parameter key="mailgun.swift_transport.transport.class">Redking\Bundle\MailBundle\Services\MailgunTransport</parameter>
+        <parameter key="mailgun.class">Mailgun\Mailgun</parameter>
+        <parameter key="redking_mail.swift.listener.class">Redking\Bundle\MailBundle\EventListener\SwiftEventListener</parameter>
+        <parameter key="redking_mail.activity.class">Redking\Bundle\MailBundle\Document\EmailActivity</parameter>
+        <parameter key="redking_mail.message_maker.class">Redking\Bundle\MailBundle\Services\MessageMaker</parameter>
+        <!-- Dummy REST controller classes -->
+        <parameter key="redking_mail.email_activity.controller.class">Redking\Bundle\CoreRestBundle\Controller\EmptyController</parameter>
+        <parameter key="redking_mail.messaging.controller.class">Redking\Bundle\CoreRestBundle\Controller\EmptyController</parameter>
+    </parameters>
+
+    <services>
+<!-- Dummy REST controller -->
+        <service id="redking_mail.email_activity.controller" class="%redking_mail.email_activity.controller.class%" />
+        <service id="redking_mail.messaging.controller" class="%redking_mail.email_activity.controller.class%" />
+
+<!-- MAILGUN SDK -->
+        <service id="mailgun.library" class="%mailgun.class%" public="true">
+            <argument>%mailgun.key%</argument>
+        </service>
+
+<!-- SWIFTMAIL TRANPORT -->
+        <service id="mailgun.swift_transport.transport" class="%mailgun.swift_transport.transport.class%" public="true">
+            <argument></argument>
+            <argument type="service" id="mailgun.library"></argument>
+            <argument>%mailgun.domain%</argument>
+            <call method="registerPlugin">
+                <argument type="service" id="redking_mail.swift.listener" />
+            </call>
+            <call method="setDefaultFrom">
+                <argument>%redking_mail.default_from%</argument>
+            </call>
+            <call method="setDeliveryEnabled">
+                <argument>%redking_mail.delivery_enabled%</argument>
+            </call>
+        </service>
+
+<!-- SWIFTMAIL EVENT LISTENER -->
+        <service id="redking_mail.swift.listener" class="%redking_mail.swift.listener.class%">
+            <argument type="service" id="doctrine_mongodb" />
+            <argument>%redking_mail.activity.class%</argument>
+            <argument>%redking_mail.auto_record_emails%</argument>
+            <tag name="swiftmailer.plugin" />
+        </service>
+
+<!-- MESSAGE MAKER BASED ON TEMPLATE -->
+        <service id="redking_mail.message_maker" class="%redking_mail.message_maker.class%">
+            <argument type="service" id="doctrine_mongodb" />
+            <argument type="service" id="twigstring" />
+            <argument>%redking_mail.email_template.class%</argument>
+        </service>
+    </services>
+</container>

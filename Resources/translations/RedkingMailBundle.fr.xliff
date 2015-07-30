@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="" >
+        <body>
+<!-- GENERAL -->
+            <trans-unit id="breadcrumb.link_email_template_list">
+                <source>breadcrumb.link_email_template_list</source>
+                <target>Templates d'email</target>
+            </trans-unit>
+            <trans-unit id="EmailTemplate">
+                <source>EmailTemplate</source>
+                <target>Templates d'email</target>
+            </trans-unit>
+            <trans-unit id="form.help.email_translation">
+                <source>form.help.email_translation</source>
+                <target>Vous pouvez inclure des templates à base de &lt;pre&gt;[[ user.firstname ]]&lt;/pre&gt;</target>
+            </trans-unit>
+<!-- LIST -->
+            <trans-unit id="list.label_name">
+                <source>list.label_name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="list.label_created_at">
+                <source>list.label_created_at</source>
+                <target>Date de création</target>
+            </trans-unit>
+            <trans-unit id="list.label_updated_at">
+                <source>list.label_updated_at</source>
+                <target>Date de modification</target>
+            </trans-unit>
+            <trans-unit id="list.label_get_name_to_string">
+                <source>list.label_get_name_to_string</source>
+                <target>Nom</target>
+            </trans-unit>
+<!-- FILTER -->
+            <trans-unit id="filter.label_name">
+                <source>filter.label_name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="filter.label_created_at">
+                <source>filter.label_created_at</source>
+                <target>Date de création</target>
+            </trans-unit>
+            <trans-unit id="filter.label_updated_at">
+                <source>filter.label_updated_at</source>
+                <target>Date de mise à jour</target>
+            </trans-unit>
+<!-- FORM -->
+            <trans-unit id="form.label_name">
+                <source>form.label_name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="form.label_subject">
+                <source>form.label_subject</source>
+                <target>Sujet</target>
+            </trans-unit>
+            <trans-unit id="form.label_body">
+                <source>form.label_body</source>
+                <target>Corps</target>
+            </trans-unit>
+            <trans-unit id="form.label_translations">
+                <source>form.label_translations</source>
+                <target>Traductions</target>
+            </trans-unit>
+            <trans-unit id="form.label_name_user_message">
+                <source>form.label_name_user_message</source>
+                <target>Message entre utilisateurs</target>
+            </trans-unit>
+<!-- SHOW -->
+            <trans-unit id="show.label_name">
+                <source>show.label_name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="show.label_created_at">
+                <source>show.label_created_at</source>
+                <target>Date de création</target>
+            </trans-unit>
+            <trans-unit id="show.label_updated_at">
+                <source>show.label_updated_at</source>
+                <target>Date de modification</target>
+            </trans-unit>
+            <trans-unit id="show.label_translations">
+                <source>show.label_translations</source>
+                <target>Traductions</target>
+            </trans-unit>
+            <trans-unit id="show.label_get_name_to_string">
+                <source>show.label_get_name_to_string</source>
+                <target>Nom</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
